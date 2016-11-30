@@ -152,12 +152,12 @@ namespace Death_Star_Summative
 
             #region Deathstar bomb drop
                 y = 125;
-                int x2 = 200;
+                int x2 = 245;
                 int y2 = 125;
 
                 for (int x = 385; x >= -10; x--)
                 {
-                  if(x <= 200)
+                  if(x <= 245)
                   {
 
                     fg.FillEllipse(drawBrush, x2, y2, 8, 8);
@@ -172,9 +172,25 @@ namespace Death_Star_Summative
                     fg.DrawLine(drawStar2, 260, 175, 260, 450);
                        Thread.Sleep(1);
                 }
+            fg.Clear(Color.Black);
+            #endregion
 
-                #endregion
+            fg.DrawLine(drawStar2, 190, 450, 190, 450);
+            fg.DrawLine(drawStar2, 210, 450, 210, 450);
+            fg.FillEllipse(drawBrush2, 200, 290, 20, 20);
 
+            #region Deathstar blowup
+            int x3 = 200;
+            for (int y3 = 5; y3 <= 290; y3++)
+            {
+                fg.FillEllipse(drawBrush, x3, y3, 8, 8);
+                fg.DrawLine(drawStar2, 190, 450, 190, 450);
+                fg.DrawLine(drawStar2, 210, 450, 210, 450);
             }
+
+            #endregion
+
+
+        }
     }
 }
