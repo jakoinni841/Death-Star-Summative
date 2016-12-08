@@ -61,6 +61,15 @@ namespace Death_Star_Summative.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Converted_file_497c9140 {
+            get {
+                return ResourceManager.GetStream("Converted_file_497c9140", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap The_Death_Star {

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.Media;
 
 namespace Death_Star_Summative
 {
@@ -25,6 +26,8 @@ namespace Death_Star_Summative
          
             titleLabel.Visible = false;
             Refresh();
+            SoundPlayer player = new SoundPlayer(Properties.Resources.Converted_file_497c9140);
+            player.Play();
             #region Mission Briefing
 
             Graphics fg = deathstarBox.CreateGraphics();
@@ -63,7 +66,7 @@ namespace Death_Star_Summative
             Thread.Sleep(400);
 
             fg.DrawString(" Goodluck", drawLuck, drawGood, 175, 200);
-            Thread.Sleep(400);
+
 
             startButton.Visible = false;
             startMisson.Visible = true;
@@ -143,12 +146,13 @@ namespace Death_Star_Summative
             fg.Clear(Color.Black);
             #endregion
 
+            SolidBrush drawBrush3 = new SolidBrush(Color.Yellow);
             SolidBrush drawBrush2 = new SolidBrush(Color.White);
             Pen drawStar2 = new Pen(Color.White, 10);
 
-            fg.DrawEllipse(drawStar2, -10, 175, 500, 500);
-            fg.DrawLine(drawStar2, 205, 175, 205, 300);
-            fg.FillEllipse(drawBrush2, 200, 295, 10, 10);
+            fg.DrawEllipse(drawStar, -10, 175, 500, 500);
+            fg.DrawLine(drawStar, 205, 175, 205, 300);
+            fg.FillEllipse(drawBrush, 200, 295, 10, 10);
 
             #region Deathstar bomb drop
                 y = 125;
@@ -164,9 +168,9 @@ namespace Death_Star_Summative
                     y2++;
 
                     Thread.Sleep(1);
-                }
+                  }
                     fg.Clear(Color.Black);
-                    fg.FillRectangle(drawBrush, x, y, 8, 8);
+                    fg.FillRectangle(drawBrush, x, y, 11, 11);
                     fg.DrawEllipse(drawStar2, -10, 175, 500, 500);
                     fg.DrawLine(drawStar2, 240, 175, 240, 450);
                     fg.DrawLine(drawStar2, 260, 175, 260, 450);
@@ -175,21 +179,47 @@ namespace Death_Star_Summative
             fg.Clear(Color.Black);
             #endregion
 
-            fg.DrawLine(drawStar2, 190, 450, 190, 450);
-            fg.DrawLine(drawStar2, 210, 450, 210, 450);
+            fg.DrawLine(drawStar2, 200, 0, 200, 220);
+            fg.DrawLine(drawStar2, 225, 0, 225, 220);
             fg.FillEllipse(drawBrush2, 200, 290, 20, 20);
 
             #region Deathstar blowup
             int x3 = 200;
-            for (int y3 = 5; y3 <= 290; y3++)
+            for (int y3 = 0; y3 <= 223; y3++)
             {
-                fg.FillEllipse(drawBrush, x3, y3, 8, 8);
-                fg.DrawLine(drawStar2, 190, 450, 190, 450);
-                fg.DrawLine(drawStar2, 210, 450, 210, 450);
+                fg.Clear(Color.Black);
+                fg.FillEllipse(drawBrush, x3, y3, 20, 20);
+                fg.DrawLine(drawStar2, 200, 0, 200, 220);
+                fg.DrawLine(drawStar2, 225, 0, 225, 220);
+                fg.DrawEllipse(drawStar, 193, 215, 35, 35);
+                Thread.Sleep(4);
             }
+
+            int width = 20;
+            SoundPlayer player = new SoundPlayer(Properties.Resources.Converted_file_497c9140);
+            player.Play();
+            for (int height = 20; height <= 300; height++)
+            {
+                fg.Clear(Color.Black);
+                fg.FillEllipse(drawBrush3, 200, 220, height, height);
+                fg.DrawLine(drawStar2, 200, 0, 200, 220);
+                fg.DrawLine(drawStar2, 225, 0, 225, 220);
+                fg.DrawEllipse(drawStar, 193, 215, 35, 35);
+
+                fg.FillEllipse(drawBrush3, 200, 220, width, width);
+                width--;
+            }
+            fg.Clear(Color.Black);
+
 
             #endregion
 
+            Font drawFont = new Font("OCR A Std", 16, FontStyle.Bold);
+
+            fg.DrawString("Mission Complete, \n Goodjob", drawFont, drawBrush, 5, 5);
+            Thread.Sleep(3000);
+
+            Application.Exit();
 
         }
     }
